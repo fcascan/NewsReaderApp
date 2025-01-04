@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -23,7 +24,7 @@ fun NewsDetailScreen(
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxSize()) {
-
+            Text(text = "News Detail Screen")
         }
     }
 }
@@ -36,8 +37,9 @@ fun NewsDetailScreen(
 )
 @Composable
 fun NewsDetailScreenPortraitPreview() {
-    NewsScreen(
-        navigateToNewsDetail = {},
+    NewsDetailScreen(
+        navigateBack = {},
+        navigateToNews = {},
         navigateToUsers = {},
         navigateToSettings = {},
     )
@@ -50,8 +52,9 @@ fun NewsDetailScreenPortraitPreview() {
 )
 @Composable
 fun NewsDetailScreenLandscapePreview() {
-    NewsScreen(
-        navigateToNewsDetail = {},
+    NewsDetailScreen(
+        navigateBack = {},
+        navigateToNews = {},
         navigateToUsers = {},
         navigateToSettings = {},
     )

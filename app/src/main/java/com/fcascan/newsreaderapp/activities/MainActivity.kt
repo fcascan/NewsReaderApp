@@ -7,6 +7,9 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.Scaffold
+import androidx.navigation.compose.rememberNavController
+import com.fcascan.newsreaderapp.components.BottomNavigationBar
 import com.fcascan.newsreaderapp.navigation.NavigationWrapper
 import com.fcascan.newsreaderapp.ui.theme.NewsReaderAppTheme
 
@@ -28,7 +31,12 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             NewsReaderAppTheme {
-                NavigationWrapper()
+                val navController = rememberNavController()
+                Scaffold(
+                    bottomBar = { BottomNavigationBar(navController) }
+                ) {
+                    NavigationWrapper(navController)
+                }
             }
         }
 

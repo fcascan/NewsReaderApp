@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -22,7 +23,7 @@ fun UsersScreen(
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxSize()) {
-
+            Text(text = "Users Screen")
         }
     }
 }
@@ -35,9 +36,9 @@ fun UsersScreen(
 )
 @Composable
 fun UsersScreenPortraitPreview() {
-    NewsScreen(
-        navigateToNewsDetail = {},
-        navigateToUsers = {},
+    UsersScreen(
+        navigateToUserMap = {},
+        navigateToNews = {},
         navigateToSettings = {},
     )
 }
@@ -49,9 +50,9 @@ fun UsersScreenPortraitPreview() {
 )
 @Composable
 fun UsersScreenLandscapePreview() {
-    NewsScreen(
-        navigateToNewsDetail = {},
-        navigateToUsers = {},
+    UsersScreen(
+        navigateToUserMap = {},
+        navigateToNews = {},
         navigateToSettings = {},
     )
 }
