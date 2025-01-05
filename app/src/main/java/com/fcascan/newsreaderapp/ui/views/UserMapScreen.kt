@@ -13,9 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun UserMapScreen(
     navigateBack: () -> Unit,
-    navigateToNews: () -> Unit,
-    navigateToUsers: () -> Unit,
-    navigateToSettings: () -> Unit,
 ) {
     val TAG = "UserMapScreen"
     val context = LocalContext.current
@@ -39,9 +36,6 @@ fun UserMapScreen(
 fun UserMapScreenPortraitPreview() {
     UserMapScreen(
         navigateBack = {},
-        navigateToNews = {},
-        navigateToUsers = {},
-        navigateToSettings = {},
     )
 }
 
@@ -54,8 +48,5 @@ fun UserMapScreenPortraitPreview() {
 fun UserMapScreenLandscapePreview() {
     UserMapScreen(
         navigateBack = {},
-        navigateToNews = {},
-        navigateToUsers = {},
-        navigateToSettings = {},
     )
 }

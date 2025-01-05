@@ -12,8 +12,6 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun SettingsScreen(
-    navigateToNews: () -> Unit,
-    navigateToUsers: () -> Unit,
 ) {
     val TAG = "SettingsScreen"
     val context = LocalContext.current
@@ -36,8 +34,6 @@ fun SettingsScreen(
 @Composable
 fun SettingsScreenPortraitPreview() {
     SettingsScreen(
-        navigateToNews = {},
-        navigateToUsers = {},
     )
 }
 
@@ -49,7 +45,5 @@ fun SettingsScreenPortraitPreview() {
 @Composable
 fun SettingsLandscapePreview() {
     SettingsScreen(
-        navigateToNews = {},
-        navigateToUsers = {},
     )
 }

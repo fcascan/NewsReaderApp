@@ -1,4 +1,4 @@
-package com.fcascan.newsreaderapp.models
+package com.fcascan.newsreaderapp.ui.models
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face

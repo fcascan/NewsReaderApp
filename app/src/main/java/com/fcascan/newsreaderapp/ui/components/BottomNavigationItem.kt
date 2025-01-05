@@ -1,4 +1,4 @@
-package com.fcascan.newsreaderapp.components
+package com.fcascan.newsreaderapp.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.kotlin.android.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -70,4 +72,11 @@ dependencies {
     //Navigation:
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.kotlinx.serialization.json)
+
+    //Dagger Hilt:
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    //Coil (Image loading from URL):
+    implementation(libs.coil)
 }

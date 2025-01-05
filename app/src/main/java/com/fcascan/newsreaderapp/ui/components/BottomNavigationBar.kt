@@ -1,4 +1,4 @@
-package com.fcascan.newsreaderapp.components
+package com.fcascan.newsreaderapp.ui.components
 
 import android.util.Log
 import androidx.compose.material3.*
@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.fcascan.newsreaderapp.models.BottomNavModel
+import com.fcascan.newsreaderapp.ui.models.BottomNavModel
 import com.fcascan.newsreaderapp.navigation.utils.getCurrentRoute
 
 @Composable

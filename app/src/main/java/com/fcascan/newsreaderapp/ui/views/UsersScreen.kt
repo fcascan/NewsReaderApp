@@ -13,8 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun UsersScreen(
     navigateToUserMap: () -> Unit,
-    navigateToNews: () -> Unit,
-    navigateToSettings: () -> Unit,
 ) {
     val TAG = "UsersScreen"
     val context = LocalContext.current
@@ -38,8 +36,6 @@ fun UsersScreen(
 fun UsersScreenPortraitPreview() {
     UsersScreen(
         navigateToUserMap = {},
-        navigateToNews = {},
-        navigateToSettings = {},
     )
 }
 
@@ -52,7 +48,5 @@ fun UsersScreenPortraitPreview() {
 fun UsersScreenLandscapePreview() {
     UsersScreen(
         navigateToUserMap = {},
-        navigateToNews = {},
-        navigateToSettings = {},
     )
 }

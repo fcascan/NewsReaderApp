@@ -13,9 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun NewsDetailScreen(
     navigateBack: () -> Unit,
-    navigateToNews: () -> Unit,
-    navigateToUsers: () -> Unit,
-    navigateToSettings: () -> Unit,
 ) {
     val TAG = "NewsDetailScreen"
     val context = LocalContext.current
@@ -39,9 +36,6 @@ fun NewsDetailScreen(
 fun NewsDetailScreenPortraitPreview() {
     NewsDetailScreen(
         navigateBack = {},
-        navigateToNews = {},
-        navigateToUsers = {},
-        navigateToSettings = {},
     )
 }
 
@@ -54,8 +48,5 @@ fun NewsDetailScreenPortraitPreview() {
 fun NewsDetailScreenLandscapePreview() {
     NewsDetailScreen(
         navigateBack = {},
-        navigateToNews = {},
-        navigateToUsers = {},
-        navigateToSettings = {},
     )
 }

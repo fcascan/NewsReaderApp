@@ -28,37 +28,16 @@ fun NavigationWrapper(
                 navigateToNewsDetail = {
                     navController.navigate(NewsDetail)
                 },
-                navigateToUsers = {
-                    navController.navigate(Users)
-                },
-                navigateToSettings = {
-                    navController.navigate(Settings)
-                },
             )
         }
         composable<Settings> {
             SettingsScreen(
-                navigateToNews = {
-                    navController.navigate(News)
-                },
-                navigateToUsers = {
-                    navController.navigate(Users)
-                },
             )
         }
         composable<NewsDetail> {
             NewsDetailScreen(
                 navigateBack = {
                     navController.popBackStack()
-                },
-                navigateToNews = {
-                    navController.navigate(News)
-                },
-                navigateToUsers = {
-                    navController.navigate(Users)
-                },
-                navigateToSettings = {
-                    navController.navigate(Settings)
                 },
             )
         }
@@ -67,27 +46,12 @@ fun NavigationWrapper(
                 navigateToUserMap = {
                     navController.navigate(UserMap)
                 },
-                navigateToNews = {
-                    navController.navigate(News)
-                },
-                navigateToSettings = {
-                    navController.navigate(Settings)
-                },
             )
         }
         composable<UserMap> {
             UserMapScreen(
                 navigateBack = {
                     navController.popBackStack()
-                },
-                navigateToNews = {
-                    navController.navigate(News)
-                },
-                navigateToUsers = {
-                    navController.navigate(Users)
-                },
-                navigateToSettings = {
-                    navController.navigate(Settings)
                 },
             )
         }
