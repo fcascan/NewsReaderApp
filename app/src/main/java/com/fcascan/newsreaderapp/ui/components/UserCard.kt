@@ -1,6 +1,5 @@
 package com.fcascan.newsreaderapp.ui.components
 
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -22,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,11 +29,10 @@ import coil.compose.rememberAsyncImagePainter
 import com.fcascan.newsreaderapp.R
 
 @Composable
-fun NewsCard(
-    title: String,
-    author: String,
-    content: String,
-    imageUrl: String,
+fun UserCard(
+    name: String,
+    lastName: String,
+    avatarUrl: String,
     onClick: () -> Unit
 ) {
     Card(
@@ -53,39 +52,32 @@ fun NewsCard(
                 .fillMaxWidth()
                 .height(IntrinsicSize.Min),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Column(
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxHeight()
-                    .wrapContentWidth()
-                    .weight(3f)
+                    .weight(0.75f)
             ) {
                 Text(
                     maxLines = 1,
-                    fontSize = 32.sp,
-                    text = title
+                    fontSize = 28.sp,
+                    text = lastName
                 )
                 Text(
                     maxLines = 1,
                     fontSize = 20.sp,
                     fontStyle = FontStyle.Italic,
-                    text = author
-                )
-                Text(
-                    maxLines = 3,
-                    fontSize = 16.sp,
-                    text = content
+                    text = name
                 )
             }
             Image(
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(0.25f)
                     .clip(RoundedCornerShape(8.dp)),
-                painter = if(imageUrl.isNotEmpty()) rememberAsyncImagePainter(model = imageUrl)
-                           else painterResource(R.drawable.newspaper),
-                contentDescription = title
+                painter = if(avatarUrl.isNotEmpty()) rememberAsyncImagePainter(model = avatarUrl)
+                else painterResource(R.drawable.sample_user_icon),
+                contentDescription = name + lastName
             )
         }
     }
@@ -93,12 +85,11 @@ fun NewsCard(
 
 @Preview
 @Composable
-fun NewsCardPreview() {
-    NewsCard(
-        title = "Title",
-        author = "Author",
-        content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        imageUrl = "",
+fun UserCardPreview() {
+    UserCard(
+        name = "Fernando",
+        lastName = "Castro Canosa",
+        avatarUrl = "",
         onClick = {}
     )
 }

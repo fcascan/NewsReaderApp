@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.fcascan.newsreaderapp.navigation.NavRoutes
 import com.fcascan.newsreaderapp.ui.models.BottomNavModel
 import com.fcascan.newsreaderapp.navigation.utils.getCurrentRoute
 
@@ -31,8 +32,10 @@ fun BottomNavigationBar(
                 label = item.title,
                 selected = isSelected,
                 onClick = {
-                    navController.navigate(item.route) {
-                        launchSingleTop = true  // Reuse the existing screen instead of stacking it on top
+                    if(item.route != currentRoute) {
+                        navController.navigate(item.route) {
+                            launchSingleTop = true  // Reuse the existing screen instead of stacking it on top
+                        }
                     }
                 }
             )
