@@ -1,3 +1,4 @@
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -15,14 +16,22 @@ fun SearchBar(
 ) {
     TextField(
         value = query,
-        onValueChange = onQueryChanged,
+        onValueChange = {
+            Log.d("SearchBar", "Query changed: $it")
+            onQueryChanged(it)
+        },
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
         placeholder = { Text("Search news...") },
         singleLine = true,
         trailingIcon = {
-            IconButton(onClick = onSearch) {
+            IconButton(
+                onClick = {
+                    Log.d("SearchBar", "Search clicked")
+                    onSearch()
+                }
+            ) {
                 Icon(Icons.Default.Search, contentDescription = "Search")
             }
         }

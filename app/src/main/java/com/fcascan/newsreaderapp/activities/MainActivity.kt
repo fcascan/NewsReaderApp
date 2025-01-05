@@ -1,12 +1,11 @@
 package com.fcascan.newsreaderapp.activities
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
@@ -15,6 +14,9 @@ import androidx.navigation.compose.rememberNavController
 import com.fcascan.newsreaderapp.ui.components.BottomNavigationBar
 import com.fcascan.newsreaderapp.navigation.NavigationWrapper
 import com.fcascan.newsreaderapp.ui.theme.NewsReaderAppTheme
+import com.fcascan.newsreaderapp.ui.viewmodels.NewsScreenViewModel
+import com.fcascan.newsreaderapp.ui.viewmodels.SettingsScreenViewModel
+import com.fcascan.newsreaderapp.ui.viewmodels.UsersScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,16 +25,13 @@ class MainActivity : ComponentActivity() {
         val TAG = MainActivity::class.java.simpleName
     }
 
-    private lateinit var sharedPreferences: SharedPreferences
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //SharedPreferences:
-        sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        val isDarkTheme = sharedPreferences.getString("isDarkTheme", null)
-        Log.d(TAG, "isDarkTheme: $isDarkTheme")
+        //ViewModels:
+        val newsScreenViewModel: NewsScreenViewModel by viewModels()
+        val usersScreenViewModel: UsersScreenViewModel by viewModels()
+        val settingsScreenViewModel: SettingsScreenViewModel by viewModels()
 
         setContent {
             NewsReaderAppTheme {
@@ -41,7 +40,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.padding(0.dp),
                     bottomBar = { BottomNavigationBar(navController) }
                 ) {
-                    NavigationWrapper(navController)
+                    NavigationWrapper(
+                        navController = navController,
+                        newsScreenViewModel = newsScreenViewModel,
+                        usersScreenViewModel = usersScreenViewModel,
+                        settingsScreenViewModel = settingsScreenViewModel
+                    )
                 }
             }
         }

@@ -14,10 +14,16 @@ import com.fcascan.newsreaderapp.navigation.NavRoutes.NewsDetail
 import com.fcascan.newsreaderapp.navigation.NavRoutes.Settings
 import com.fcascan.newsreaderapp.navigation.NavRoutes.UserMap
 import com.fcascan.newsreaderapp.navigation.NavRoutes.Users
+import com.fcascan.newsreaderapp.ui.viewmodels.NewsScreenViewModel
+import com.fcascan.newsreaderapp.ui.viewmodels.SettingsScreenViewModel
+import com.fcascan.newsreaderapp.ui.viewmodels.UsersScreenViewModel
 
 @Composable
 fun NavigationWrapper(
     navController: NavHostController,
+    newsScreenViewModel: NewsScreenViewModel,
+    usersScreenViewModel: UsersScreenViewModel,
+    settingsScreenViewModel: SettingsScreenViewModel,
 ) {
     NavHost(
         navController = navController,
@@ -25,6 +31,7 @@ fun NavigationWrapper(
     ) {
         composable<News> {
             NewsScreen(
+                viewModel = newsScreenViewModel,
                 navigateToNewsDetail = {
                     navController.navigate(NewsDetail)
                 },
@@ -32,6 +39,7 @@ fun NavigationWrapper(
         }
         composable<Settings> {
             SettingsScreen(
+                viewModel = settingsScreenViewModel,
             )
         }
         composable<NewsDetail> {
@@ -43,6 +51,7 @@ fun NavigationWrapper(
         }
         composable<Users> {
             UsersScreen(
+                viewModel = usersScreenViewModel,
                 navigateToUserMap = {
                     navController.navigate(UserMap)
                 },

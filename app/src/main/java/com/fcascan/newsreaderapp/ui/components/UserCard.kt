@@ -1,5 +1,6 @@
 package com.fcascan.newsreaderapp.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -10,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -47,7 +47,10 @@ fun UserCard(
     ) {
         Row(
             modifier = Modifier
-                .clickable(onClick = onClick)
+                .clickable(onClick = {
+                    Log.d("UserCard", "UserCard $name $lastName clicked")
+                    onClick()
+                })
                 .padding(16.dp)
                 .fillMaxWidth()
                 .height(IntrinsicSize.Min),
@@ -83,7 +86,9 @@ fun UserCard(
     }
 }
 
-@Preview
+@Preview(
+    showBackground = true,
+)
 @Composable
 fun UserCardPreview() {
     UserCard(

@@ -1,5 +1,6 @@
 package com.fcascan.newsreaderapp.ui.components
 
+import android.util.Log
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -39,7 +40,12 @@ fun NewsCard(
     Card(
         modifier = Modifier
             .padding(10.dp)
-            .clickable(onClick = onClick),
+            .clickable(
+                onClick = {
+                    Log.d("NewsCard", "Card clicked $title")
+                    onClick()
+                }
+            ),
         shape = MaterialTheme.shapes.medium,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface

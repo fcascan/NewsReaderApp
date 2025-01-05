@@ -7,7 +7,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.fcascan.newsreaderapp.navigation.NavRoutes
 import com.fcascan.newsreaderapp.ui.models.BottomNavModel
 import com.fcascan.newsreaderapp.navigation.utils.getCurrentRoute
 
@@ -35,6 +34,7 @@ fun BottomNavigationBar(
                     if(item.route != currentRoute) {
                         navController.navigate(item.route) {
                             launchSingleTop = true  // Reuse the existing screen instead of stacking it on top
+                            //TODO: Fixme agregar clear del backstack cuando se use el bottom nav bar
                         }
                     }
                 }

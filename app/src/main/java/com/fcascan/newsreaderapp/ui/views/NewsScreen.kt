@@ -28,16 +28,14 @@ import com.fcascan.newsreaderapp.ui.viewmodels.NewsScreenViewModel
 
 @Composable
 fun NewsScreen(
+    viewModel: NewsScreenViewModel,
     navigateToNewsDetail: (Long) -> Unit,
 ) {
     val TAG = "NewsScreen"
-    val context = LocalContext.current
-    val sharedPreferences = context.getSharedPreferences("news", Context.MODE_PRIVATE)
-    val isDarkTheme = sharedPreferences.getString("isDarkTheme", null)
-    val newsList: List<NewsModel> by viewModel(NewsScreenViewModel::class.java).newsList.collectAsState()
+    val newsList: List<NewsModel> by viewModel.newsList.collectAsState()
     var query by remember { mutableStateOf("") }
 
-    Scaffold(modifier = Modifier.fillMaxSize()) {paddingValues ->
+    Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()      //TODO: Fix, porque sino llega hasta por debajo del BottomNavBar
@@ -73,21 +71,15 @@ fun NewsScreen(
     showSystemUi = true,
     device = "spec:shape=Normal,width=360,height=700,unit=dp,dpi=480"
 )
-@Composable
-fun NewsScreenPortraitPreview() {
-    NewsScreen(
-        navigateToNewsDetail = {},
-    )
-}
-
 @Preview(
     showBackground = true,
     showSystemUi = true,
     device = "spec:shape=Normal,width=700,height=360,unit=dp,dpi=480"
 )
 @Composable
-fun NewsScreenLandscapePreview() {
+fun NewsScreenPortraitPreview() {
     NewsScreen(
+        viewModel = viewModel(),
         navigateToNewsDetail = {},
     )
 }

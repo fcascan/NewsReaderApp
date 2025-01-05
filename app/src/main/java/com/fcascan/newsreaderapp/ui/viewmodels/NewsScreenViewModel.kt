@@ -19,7 +19,6 @@ class NewsScreenViewModel @Inject constructor(
     val newsList = _newsList
     fun setNewsList(newsList: List<NewsModel>) { _newsList.value = newsList }
 
-
     init {
         val mockNewsList = listOf(
             NewsModel(id = 1L, title = "Title 1", author = "Author 1", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
