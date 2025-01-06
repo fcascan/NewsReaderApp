@@ -1,8 +1,16 @@
 package com.fcascan.newsreaderapp.ui.views
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -14,9 +22,10 @@ import com.fcascan.newsreaderapp.use_cases.GetGeoLocationByUserIdUseCase
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.Marker
-import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
+import com.google.maps.android.compose.rememberMarkerState
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserMapScreen(
     userId: Long?,
@@ -29,16 +38,37 @@ fun UserMapScreen(
     viewModel.getGeoLocationByUserId(userId)
 
     val cameraPositionState = rememberCameraPositionState()
+    val markerState = rememberMarkerState()
 
     LaunchedEffect(geoLocation) {
         geoLocation?.let {
             cameraPositionState.position = com.google.android.gms.maps.model.CameraPosition.fromLatLngZoom(
                 LatLng(it.latitude, it.longitude), 15f
             )
+            markerState.position = LatLng(it.latitude, it.longitude)
         }
     }
 
-    Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+             TopAppBar(
+                 title = {
+                     Text(text = "User Location")
+                 },
+                 navigationIcon = {
+                     IconButton(
+                         onClick = {
+                             Log.d(TAG, "Back button clicked")
+                             navigateBack()
+                         }
+                     ) {
+                         Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                     }
+                 }
+             )
+        }
+    ) { paddingValues ->
         if (geoLocation != null) {
             GoogleMap(
                 modifier = Modifier
@@ -47,8 +77,10 @@ fun UserMapScreen(
                 cameraPositionState = cameraPositionState
             ) {
                 Marker(
-                    state = MarkerState(position = LatLng(geoLocation.latitude, geoLocation.longitude)),
-                    title = "User Location"
+                    state = markerState,
+                    title = "User Location",
+                    snippet = "latitude: ${geoLocation.latitude}, longitude: ${geoLocation.longitude}",
+                    draggable = false,
                 )
             }
         } else {

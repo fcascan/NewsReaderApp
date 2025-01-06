@@ -49,7 +49,7 @@ fun UsersScreen(
                         lastName = item.lastName,
                         avatarUrl = item.avatarUrl,
                         onClick = {
-                            Log.d("UsersScreen", "User clicked -> ${item.id}")
+                            Log.d(TAG, "User clicked -> ${item.id}")
                             navigateToUserMap(item.id)
                         },
                     )

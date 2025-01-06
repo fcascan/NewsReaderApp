@@ -1,6 +1,5 @@
 package com.fcascan.newsreaderapp.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fcascan.newsreaderapp.models.NewsModel
