@@ -10,11 +10,11 @@ object NavRoutes {
     object Settings
 
     @Serializable
-    object NewsDetail
+    data class NewsDetail(val id: Long)
 
     @Serializable
     object Users
 
     @Serializable
-    object UserMap
+    data class UserMap(val id: Long)
 }

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -10,6 +12,11 @@ android {
     namespace = "com.fcascan.newsreaderapp"
     compileSdk = 35
 
+    //To enable custom BuildConfig fields:
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "com.fcascan.newsreaderapp"
         minSdk = 26
@@ -21,6 +28,14 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        // Load the API key from the credentials.properties file:
+        val credentialsProperties = Properties()
+        file("credentials.properties").inputStream().use {
+            credentialsProperties.load(it)
+        }
+        val googleMapsApiKey: String = credentialsProperties["GOOGLE_MAPS_API_KEY"] as String
+        manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = googleMapsApiKey
     }
 
     buildTypes {
@@ -53,6 +68,7 @@ android {
 }
 
 dependencies {
+    //Stock dependencies:
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -79,4 +95,8 @@ dependencies {
 
     //Coil (Image loading from URL):
     implementation(libs.coil)
+
+    //Google Maps Compose:
+    implementation(libs.maps.compose)
+    implementation(libs.play.services.maps)
 }

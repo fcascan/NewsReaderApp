@@ -21,20 +21,25 @@ class NewsScreenViewModel @Inject constructor(
 
     init {
         val mockNewsList = listOf(
-            NewsModel(id = 1L, title = "Title 1", author = "Author 1", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            NewsModel(id = 1L, title = "Title 1", date = "2025-01-04", author = "Author 1", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
+                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
             ),
-            NewsModel(id = 2L, title = "Title 2", author = "Author 2", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            NewsModel(id = 2L, title = "Title 2", date = "2025-01-04", author = "Author 2", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
+                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
             ),
-            NewsModel(id = 3L, title = "Title 3", author = "Author 3", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            NewsModel(id = 3L, title = "Title 3", date = "2025-01-04", author = "Author 3", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
+                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
             ),
-            NewsModel(id = 4L, title = "Title 4", author = "Author 4", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            NewsModel(id = 4L, title = "Title 4", date = "2025-01-04", author = "Author 4", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
+                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
             ),
-            NewsModel(id = 5L, title = "Title 5", author = "Author 5", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            NewsModel(id = 5L, title = "Title 5", date = "2025-01-04", author = "Author 5", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
+                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
             ),
         )
         setNewsList(mockNewsList)

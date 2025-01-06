@@ -14,15 +14,19 @@ import com.fcascan.newsreaderapp.navigation.NavRoutes.NewsDetail
 import com.fcascan.newsreaderapp.navigation.NavRoutes.Settings
 import com.fcascan.newsreaderapp.navigation.NavRoutes.UserMap
 import com.fcascan.newsreaderapp.navigation.NavRoutes.Users
+import com.fcascan.newsreaderapp.ui.viewmodels.NewsDetailScreenViewModel
 import com.fcascan.newsreaderapp.ui.viewmodels.NewsScreenViewModel
 import com.fcascan.newsreaderapp.ui.viewmodels.SettingsScreenViewModel
 import com.fcascan.newsreaderapp.ui.viewmodels.UsersScreenViewModel
+import com.fcascan.newsreaderapp.ui.viewmodels.UsersMapScreenViewModel
 
 @Composable
 fun NavigationWrapper(
     navController: NavHostController,
     newsScreenViewModel: NewsScreenViewModel,
+    newsDetailScreenViewModel: NewsDetailScreenViewModel,
     usersScreenViewModel: UsersScreenViewModel,
+    usersMapScreenViewModel: UsersMapScreenViewModel,
     settingsScreenViewModel: SettingsScreenViewModel,
 ) {
     NavHost(
@@ -32,8 +36,8 @@ fun NavigationWrapper(
         composable<News> {
             NewsScreen(
                 viewModel = newsScreenViewModel,
-                navigateToNewsDetail = {
-                    navController.navigate(NewsDetail)
+                navigateToNewsDetail = { newsId ->
+                    navController.navigate(NewsDetail(id = newsId))
                 },
             )
         }
@@ -43,7 +47,10 @@ fun NavigationWrapper(
             )
         }
         composable<NewsDetail> {
+            val newsId = it.arguments?.getLong("id")
             NewsDetailScreen(
+                newsId = newsId,
+                viewModel = newsDetailScreenViewModel,
                 navigateBack = {
                     navController.popBackStack()
                 },
@@ -52,13 +59,16 @@ fun NavigationWrapper(
         composable<Users> {
             UsersScreen(
                 viewModel = usersScreenViewModel,
-                navigateToUserMap = {
-                    navController.navigate(UserMap)
+                navigateToUserMap = { userId ->
+                    navController.navigate(UserMap(id = userId))
                 },
             )
         }
         composable<UserMap> {
+            val userId = it.arguments?.getLong("id")
             UserMapScreen(
+                userId = userId,
+                viewModel = usersMapScreenViewModel,
                 navigateBack = {
                     navController.popBackStack()
                 },

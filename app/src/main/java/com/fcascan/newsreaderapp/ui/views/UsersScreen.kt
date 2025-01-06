@@ -1,6 +1,7 @@
 package com.fcascan.newsreaderapp.ui.views
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,7 +48,10 @@ fun UsersScreen(
                         name = item.name,
                         lastName = item.lastName,
                         avatarUrl = item.avatarUrl,
-                        onClick = { navigateToUserMap(item.id) },
+                        onClick = {
+                            Log.d("UsersScreen", "User clicked -> ${item.id}")
+                            navigateToUserMap(item.id)
+                        },
                     )
                 }
             }

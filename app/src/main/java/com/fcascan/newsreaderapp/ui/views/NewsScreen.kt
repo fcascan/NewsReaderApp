@@ -2,6 +2,7 @@ package com.fcascan.newsreaderapp.ui.views
 
 import SearchBar
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -58,7 +59,10 @@ fun NewsScreen(
                         author = item.author,
                         imageUrl = item.imageUrl,
                         content = item.content,
-                        onClick = { navigateToNewsDetail(item.id) },
+                        onClick = {
+                            Log.d(TAG, "NewsCard onClick -> id=${item.id}")
+                            navigateToNewsDetail(item.id)
+                        },
                     )
                 }
             }
