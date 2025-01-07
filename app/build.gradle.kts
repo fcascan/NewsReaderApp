@@ -111,4 +111,8 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson.converter)
+
+    //Room:
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 }

@@ -1,4 +1,4 @@
-package com.fcascan.newsreaderapp.data.network.model
+package com.fcascan.newsreaderapp.data.network.entity
 
 import com.fcascan.newsreaderapp.domain.NewsModel
 

@@ -1,7 +1,7 @@
 package com.fcascan.newsreaderapp.data.network
 
-import com.fcascan.newsreaderapp.data.network.model.NewsNetworkEntity
-import com.fcascan.newsreaderapp.data.network.model.UserNetworkEntity
+import com.fcascan.newsreaderapp.data.network.entity.NewsNetworkEntity
+import com.fcascan.newsreaderapp.data.network.entity.UserNetworkEntity
 import retrofit2.http.GET
 import retrofit2.http.Headers
 

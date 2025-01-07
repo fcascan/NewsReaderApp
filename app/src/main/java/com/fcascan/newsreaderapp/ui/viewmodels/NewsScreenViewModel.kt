@@ -3,6 +3,7 @@ package com.fcascan.newsreaderapp.ui.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fcascan.newsreaderapp.domain.NewsModel
+import com.fcascan.newsreaderapp.use_cases.FetchNewsFromRemoteUseCase
 import com.fcascan.newsreaderapp.use_cases.GetNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsScreenViewModel @Inject constructor(
     private val getNewsUseCase: GetNewsUseCase,
+    private val fetchNewsFromRemoteUseCase: FetchNewsFromRemoteUseCase,
 ) : ViewModel() {
 
     companion object {
@@ -33,4 +35,13 @@ class NewsScreenViewModel @Inject constructor(
             setNewsList(newsList)
         }
     }
+
+    fun fetchNewsFromRemote() {
+        //TODO: Llamar cuando se tire del scroll justo en el limite superior
+        viewModelScope.launch(Dispatchers.IO) {
+            val newsList = fetchNewsFromRemoteUseCase.invoke()
+            setNewsList(newsList)
+        }
+    }
+
 }
