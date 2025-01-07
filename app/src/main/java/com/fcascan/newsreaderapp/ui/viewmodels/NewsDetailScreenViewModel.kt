@@ -2,7 +2,7 @@ package com.fcascan.newsreaderapp.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fcascan.newsreaderapp.models.NewsModel
+import com.fcascan.newsreaderapp.domain.NewsModel
 import com.fcascan.newsreaderapp.use_cases.GetNewsByNewsIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

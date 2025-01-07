@@ -15,6 +15,10 @@ kspVersion = "1.9.0-1.0.12"
 coilVersion = "2.1.0"
 mapsComposeVersion = "2.0.0"
 playServicesVersion = "18.0.2"
+gsonVersion = "2.8.6"
+okhttp3Version = "4.9.1"
+loggingInterceptorVersion = "4.9.2"
+retrofitVersion = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +42,11 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
 maps-compose = { module = "com.google.maps.android:maps-compose", name = "maps-compose", version.ref = "mapsComposeVersion" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", name = "play-services-maps", version.ref = "playServicesVersion" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
+okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3Version" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptorVersion" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+retrofit-gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

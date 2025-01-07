@@ -36,6 +36,9 @@ android {
         }
         val googleMapsApiKey: String = credentialsProperties["GOOGLE_MAPS_API_KEY"] as String
         manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = googleMapsApiKey
+
+        //Retrofit base URL:
+        buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.org/\"")
     }
 
     buildTypes {
@@ -99,4 +102,13 @@ dependencies {
     //Google Maps Compose:
     implementation(libs.maps.compose)
     implementation(libs.play.services.maps)
+
+    //Gson:
+    implementation(libs.gson)
+
+    //Retrofit:
+    implementation(libs.okhttp3)
+    implementation(libs.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson.converter)
 }

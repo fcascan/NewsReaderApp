@@ -1,14 +1,18 @@
 package com.fcascan.newsreaderapp.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.fcascan.newsreaderapp.models.NewsModel
+import androidx.lifecycle.viewModelScope
+import com.fcascan.newsreaderapp.domain.NewsModel
+import com.fcascan.newsreaderapp.use_cases.GetNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class NewsScreenViewModel @Inject constructor(
-
+    private val getNewsUseCase: GetNewsUseCase,
 ) : ViewModel() {
 
     companion object {
@@ -20,29 +24,13 @@ class NewsScreenViewModel @Inject constructor(
     fun setNewsList(newsList: List<NewsModel>) { _newsList.value = newsList }
 
     init {
-        val mockNewsList = listOf(
-            NewsModel(id = 1L, title = "Title 1", date = "2025-01-04", author = "Author 1", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
-            ),
-            NewsModel(id = 2L, title = "Title 2", date = "2025-01-04", author = "Author 2", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
-            ),
-            NewsModel(id = 3L, title = "Title 3", date = "2025-01-04", author = "Author 3", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
-            ),
-            NewsModel(id = 4L, title = "Title 4", date = "2025-01-04", author = "Author 4", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
-            ),
-            NewsModel(id = 5L, title = "Title 5", date = "2025-01-04", author = "Author 5", imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-                content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                sourceUrl = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
-            ),
-        )
-        setNewsList(mockNewsList)
+        updateNews()
     }
 
+    fun updateNews() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val newsList = getNewsUseCase.invoke()
+            setNewsList(newsList)
+        }
+    }
 }

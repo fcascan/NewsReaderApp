@@ -22,7 +22,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,6 +36,7 @@ import com.fcascan.newsreaderapp.R
 fun NewsCard(
     title: String,
     author: String,
+    date: String,
     content: String,
     imageUrl: String,
     onClick: () -> Unit
@@ -68,31 +72,47 @@ fun NewsCard(
                     .wrapContentWidth()
                     .weight(3f)
             ) {
-                Text(
-                    maxLines = 1,
-                    fontSize = 32.sp,
-                    text = title
+                Image(
+                    modifier = Modifier
+                        .height(120.dp)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(8.dp)),
+                    painter = if(imageUrl.isNotEmpty()) rememberAsyncImagePainter(model = imageUrl)
+                    else painterResource(R.drawable.newspaper),
+                    contentDescription = title,
+                    contentScale = ContentScale.FillWidth
                 )
                 Text(
-                    maxLines = 1,
-                    fontSize = 20.sp,
-                    fontStyle = FontStyle.Italic,
-                    text = author
+                    maxLines = 2,
+                    fontSize = 26.sp,
+                    textAlign = TextAlign.Center,
+                    text = title,
+                    overflow = TextOverflow.Ellipsis
                 )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        maxLines = 1,
+                        fontSize = 18.sp,
+                        fontStyle = FontStyle.Italic,
+                        text = author
+                    )
+                    Text(
+                        maxLines = 1,
+                        fontSize = 18.sp,
+                        text = date
+                    )
+                }
                 Text(
-                    maxLines = 3,
+                    maxLines = 4,
                     fontSize = 16.sp,
-                    text = content
+                    textAlign = TextAlign.Justify,
+                    text = content,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
-            Image(
-                modifier = Modifier
-                    .weight(1f)
-                    .clip(RoundedCornerShape(8.dp)),
-                painter = if(imageUrl.isNotEmpty()) rememberAsyncImagePainter(model = imageUrl)
-                           else painterResource(R.drawable.newspaper),
-                contentDescription = title
-            )
         }
     }
 }
@@ -101,10 +121,16 @@ fun NewsCard(
 @Composable
 fun NewsCardPreview() {
     NewsCard(
-        title = "Title",
+        title = "Quisque non ligula laoreet, volutpat velit cursus, condimentum arcu.",
         author = "Author",
-        content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        imageUrl = "",
+        date = "04/02/2023 13:25:21",
+        content = "Semper nulla nisi habitasse montes. Ipsum ullamcorper interdum curae;. " +
+                "Cras dis justo non litora metus libero scelerisque volutpat per auctor integer. " +
+                "Curae; id natoque lacinia blandit lectus venenatis arcu pellentesque nunc " +
+                "vestibulum suspendisse. Montes pharetra proin mus orci aptent. Dis, inceptos " +
+                "enim mus aliquet libero torquent. Mauris lorem sagittis egestas nibh pulvinar" +
+                " luctus nascetur facilisis conubia netus.",
+        imageUrl = "https://dummyimage.com/800x430/b3a3c9/aenean.png&text=jsonplaceholder.org",
         onClick = {}
     )
 }

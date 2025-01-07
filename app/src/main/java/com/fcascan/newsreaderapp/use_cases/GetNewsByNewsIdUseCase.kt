@@ -1,7 +1,7 @@
 package com.fcascan.newsreaderapp.use_cases
 
 import android.util.Log
-import com.fcascan.newsreaderapp.models.NewsModel
+import com.fcascan.newsreaderapp.domain.NewsModel
 import javax.inject.Inject
 
 class GetNewsByNewsIdUseCase @Inject constructor(
@@ -18,18 +18,17 @@ class GetNewsByNewsIdUseCase @Inject constructor(
         }
         return NewsModel(
             id = newsId,
-            title = "Title",
-            date = "2025-01-05",
-            author = "Author",
-            content = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor " +
-                    "incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet consectetur" +
-                    " adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" +
-                    " lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt" +
-                    " ut labore et dolore magna aliqua lorem ipsum dolor sit amet consectetur adipiscing elit" +
-                    " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit" +
-                    " amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            imageUrl = "https://es.wikipedia.org/static/images/icons/wikipedia.png",
-            sourceUrl = "https://www.google.com"
+            title = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            date = "04/02/2023 13:25:21",
+            author = "5",
+            content = "Semper nulla nisi habitasse montes. Ipsum ullamcorper interdum curae;. " +
+                    "Cras dis justo non litora metus libero scelerisque volutpat per auctor integer. " +
+                    "Curae; id natoque lacinia blandit lectus venenatis arcu pellentesque nunc " +
+                    "vestibulum suspendisse. Montes pharetra proin mus orci aptent. Dis, inceptos " +
+                    "enim mus aliquet libero torquent. Mauris lorem sagittis egestas nibh pulvinar" +
+                    " luctus nascetur facilisis conubia netus.",
+            imageUrl = "https://dummyimage.com/200x200/FFFFFF/lorem-ipsum.png&text=jsonplaceholder.org",
+            sourceUrl = "https://jsonplaceholder.org/posts/lorem-ipsum"
         )
     }
 }

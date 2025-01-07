@@ -120,7 +120,6 @@ fun NewsDetailScreen(
                         .align(Alignment.Start),
                 )
 
-                //TODO: Agregar boton de retroceso
                 //TODO: Agregar botones flotantes de incremento y decremento de zoom
                 //TODO: Agregar funcionalidad de compartir
 
@@ -131,8 +130,7 @@ fun NewsDetailScreen(
                         withLink(
                             LinkAnnotation.Url(
                                 news.sourceUrl,
-                                TextLinkStyles(style = SpanStyle(color = Color.Blue))
-                            )
+                                TextLinkStyles(style = SpanStyle(color = Color.Blue, fontStyle = FontStyle.Italic))                            )
                         ) {
                             append(news.sourceUrl)
                         }

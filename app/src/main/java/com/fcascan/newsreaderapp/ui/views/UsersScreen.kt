@@ -1,6 +1,5 @@
 package com.fcascan.newsreaderapp.ui.views
 
-import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,11 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.fcascan.newsreaderapp.models.UserModel
+import com.fcascan.newsreaderapp.domain.UserModel
 import com.fcascan.newsreaderapp.ui.components.UserCard
 import com.fcascan.newsreaderapp.ui.viewmodels.UsersScreenViewModel
 
@@ -45,9 +43,9 @@ fun UsersScreen(
             ) {
                 items(usersList) { item ->
                     UserCard(
-                        name = item.name,
+                        name = item.firstName,
                         lastName = item.lastName,
-                        avatarUrl = item.avatarUrl,
+                        websiteUrl = item.websiteUrl,
                         onClick = {
                             Log.d(TAG, "User clicked -> ${item.id}")
                             navigateToUserMap(item.id)
