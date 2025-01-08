@@ -11,6 +11,9 @@ interface NewsDao {
     @Query("SELECT * FROM news_table")
     fun getAll(): List<NewsLocalEntity>
 
+    @Query("SELECT * FROM news_table WHERE id = :id")
+    fun getById(id: Long): NewsLocalEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertList(users: List<NewsLocalEntity>)
 

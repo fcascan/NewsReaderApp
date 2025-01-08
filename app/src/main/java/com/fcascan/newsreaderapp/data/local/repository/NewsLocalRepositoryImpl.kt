@@ -10,6 +10,10 @@ class NewsLocalRepositoryImpl @Inject constructor(
 ) : NewsLocalRepository {
     override suspend fun getAll() = newsDao.getAll().map { it.toNewsModel() }
 
+    override suspend fun getById(id: Long) : NewsModel? {
+        return newsDao.getById(id)?.toNewsModel()
+    }
+
     override suspend fun insertList(news: List<NewsModel>) {
         val newsLocalEntityList = news.map { it.toNewsLocalEntity() }
         newsDao.insertList(newsLocalEntityList)
