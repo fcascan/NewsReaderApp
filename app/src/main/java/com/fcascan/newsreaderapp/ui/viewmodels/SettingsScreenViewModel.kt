@@ -17,7 +17,7 @@ class SettingsScreenViewModel @Inject constructor(
     private val _isDarkModeEnabled = MutableStateFlow(sharedPreferencesUtil.isDarkThemeEnabled)
     val isDarkModeEnabled = _isDarkModeEnabled
     fun setIsDarkMode(isDarkMode: Boolean) {
-        _isDarkModeEnabled.value = isDarkMode
         sharedPreferencesUtil.isDarkThemeEnabled = isDarkMode
+        _isDarkModeEnabled.value = isDarkMode
     }
 }

@@ -102,7 +102,7 @@ fun UserCard(
                         withLink(
                             LinkAnnotation.Url(
                                 email,
-                                TextLinkStyles(style = SpanStyle(color = Color.Blue, fontStyle = FontStyle.Italic))
+                                TextLinkStyles(style = SpanStyle(color = MaterialTheme.colorScheme.tertiary, fontStyle = FontStyle.Italic))
                             )
                         ) {
                             append(email)
@@ -115,7 +115,7 @@ fun UserCard(
                         withLink(
                             LinkAnnotation.Url(
                                 websiteUrl,
-                                TextLinkStyles(style = SpanStyle(color = Color.Blue, fontStyle = FontStyle.Italic))
+                                TextLinkStyles(style = SpanStyle(color = MaterialTheme.colorScheme.tertiary, fontStyle = FontStyle.Italic))
                             )
                         ) {
                             append(websiteUrl)

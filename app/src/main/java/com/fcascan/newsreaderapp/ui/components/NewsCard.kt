@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -82,6 +83,7 @@ fun NewsCard(
                     contentDescription = title,
                     contentScale = ContentScale.FillWidth
                 )
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     maxLines = 2,
                     fontSize = 26.sp,
@@ -105,6 +107,7 @@ fun NewsCard(
                         text = date
                     )
                 }
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     maxLines = 4,
                     fontSize = 16.sp,

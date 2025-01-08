@@ -19,10 +19,12 @@ import com.fcascan.newsreaderapp.ui.viewmodels.NewsScreenViewModel
 import com.fcascan.newsreaderapp.ui.viewmodels.SettingsScreenViewModel
 import com.fcascan.newsreaderapp.ui.viewmodels.UsersScreenViewModel
 import com.fcascan.newsreaderapp.ui.viewmodels.UsersMapScreenViewModel
+import com.fcascan.newsreaderapp.ui.views.MainActivityViewModel
 
 @Composable
 fun NavigationWrapper(
     navController: NavHostController,
+    mainActivityViewModel: MainActivityViewModel,
     newsScreenViewModel: NewsScreenViewModel,
     newsDetailScreenViewModel: NewsDetailScreenViewModel,
     usersScreenViewModel: UsersScreenViewModel,
@@ -43,6 +45,7 @@ fun NavigationWrapper(
         }
         composable<Settings> {
             SettingsScreen(
+                activityViewModel = mainActivityViewModel,
                 viewModel = settingsScreenViewModel,
             )
         }

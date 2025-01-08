@@ -12,12 +12,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fcascan.newsreaderapp.ui.components.SettingsSwitch
 import com.fcascan.newsreaderapp.ui.viewmodels.SettingsScreenViewModel
-import com.fcascan.newsreaderapp.utils.SharedPreferencesUtil
 
 @Composable
 fun SettingsScreen(
+    activityViewModel: MainActivityViewModel,
     viewModel: SettingsScreenViewModel,
 ) {
     val TAG = "SettingsScreen"
@@ -36,6 +37,7 @@ fun SettingsScreen(
                 name = "Dark Mode",
                 isChecked = isDarkTheme,
                 onCheckedChange = {
+                    activityViewModel.setIsDarkTheme(it)
                     viewModel.setIsDarkMode(it)
                 }
             )
@@ -72,10 +74,7 @@ fun SettingsScreen(
 @Composable
 fun SettingsScreenPortraitPreview() {
     SettingsScreen(
-        viewModel = SettingsScreenViewModel(
-            sharedPreferencesUtil = SharedPreferencesUtil(
-                context = androidx.compose.ui.platform.LocalContext.current
-            )
-        ),
+        activityViewModel = viewModel(),
+        viewModel = viewModel(),
     )
 }

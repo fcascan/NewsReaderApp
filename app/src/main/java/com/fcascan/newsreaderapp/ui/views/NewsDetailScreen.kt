@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -156,7 +157,7 @@ fun NewsDetailScreen(
                         withLink(
                             LinkAnnotation.Url(
                                 news.sourceUrl,
-                                TextLinkStyles(style = SpanStyle(color = Color.Blue, fontStyle = FontStyle.Italic))                            )
+                                TextLinkStyles(style = SpanStyle(color = MaterialTheme.colorScheme.tertiary, fontStyle = FontStyle.Italic))                            )
                         ) {
                             append(news.sourceUrl)
                         }
