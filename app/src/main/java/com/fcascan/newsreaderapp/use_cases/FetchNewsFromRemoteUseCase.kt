@@ -37,7 +37,7 @@ class FetchNewsFromRemoteUseCase @Inject constructor(
             if (userId == null) {
                 news.author = "Unknown"
             } else {
-                val user = usersRepository.getUserById(userId)
+                val user = usersRepository.getById(userId)
                 val firstName = user?.firstName ?: ""
                 val lastName = user?.lastName ?: ""
                 val author = "$firstName $lastName".trim()

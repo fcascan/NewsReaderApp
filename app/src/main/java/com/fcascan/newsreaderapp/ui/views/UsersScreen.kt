@@ -61,6 +61,8 @@ fun UsersScreen(
                         UserCard(
                             name = item.firstName,
                             lastName = item.lastName,
+                            address = item.address,
+                            email = item.email,
                             websiteUrl = item.websiteUrl,
                             onClick = {
                                 Log.d(TAG, "User clicked -> ${item.id}")

@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -37,6 +39,8 @@ import com.fcascan.newsreaderapp.R
 fun UserCard(
     name: String,
     lastName: String,
+    address: String,
+    email: String,
     websiteUrl: String,
     onClick: () -> Unit
 ) {
@@ -67,16 +71,43 @@ fun UserCard(
                     .fillMaxHeight()
                     .weight(0.75f)
             ) {
-                Text(
-                    maxLines = 1,
-                    fontSize = 20.sp,
-                    text = lastName
-                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 4.dp),
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    Text(
+                        maxLines = 1,
+                        fontSize = 20.sp,
+                        text = lastName
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        maxLines = 1,
+                        fontSize = 16.sp,
+                        fontStyle = FontStyle.Italic,
+                        text = name
+                    )
+                }
                 Text(
                     maxLines = 1,
                     fontSize = 16.sp,
-                    fontStyle = FontStyle.Italic,
-                    text = name
+                    fontStyle = FontStyle.Normal,
+                    text = "address: $address"
+                )
+                Text(
+                    buildAnnotatedString {
+                        append("email: ")
+                        withLink(
+                            LinkAnnotation.Url(
+                                email,
+                                TextLinkStyles(style = SpanStyle(color = Color.Blue, fontStyle = FontStyle.Italic))
+                            )
+                        ) {
+                            append(email)
+                        }
+                    }
                 )
                 Text(
                     buildAnnotatedString {
@@ -111,6 +142,8 @@ fun UserCardPreview() {
     UserCard(
         name = "Fernando",
         lastName = "Castro Canosa",
+        address = "123 Calle Falsa, Apt. 4",
+        email = "fcc@mail.com",
         websiteUrl = "https://en.wikipedia.org/wiki/FCC",
         onClick = {}
     )

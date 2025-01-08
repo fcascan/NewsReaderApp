@@ -12,7 +12,7 @@ interface UsersDao {
     fun getAll(): List<UserLocalEntity>
 
     @Query("SELECT * FROM users_table WHERE id = :id")
-    fun getUserById(id: Long): UserLocalEntity?
+    fun getById(id: Long): UserLocalEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertList(users: List<UserLocalEntity>)

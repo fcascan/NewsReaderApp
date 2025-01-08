@@ -7,6 +7,7 @@ class UserModel(
     val id: Long,
     val firstName: String,
     val lastName: String,
+    val address: String,
     val email: String,
     val websiteUrl: String,
     val geoLocation: GeoLocationModel
@@ -16,6 +17,7 @@ class UserModel(
             id = id,
             firstname = firstName,
             lastname = lastName,
+            address = address,
             email = email,
             websiteUrl = websiteUrl,
             geoLocation = Gson().toJson(geoLocation)

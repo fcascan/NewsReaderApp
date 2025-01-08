@@ -1,7 +1,9 @@
 package com.fcascan.newsreaderapp.data.network.entity
 
+import android.util.Log
 import com.fcascan.newsreaderapp.domain.GeoLocationModel
 import com.fcascan.newsreaderapp.domain.UserModel
+import com.google.gson.annotations.SerializedName
 
 data class UserNetworkEntity(
     val id: Int?,
@@ -9,10 +11,13 @@ data class UserNetworkEntity(
     val lastname: String?,
     val email: String?,
     val birthDate: String?,
+    @SerializedName("login")
     val userLogin: UserLogin?,
+    @SerializedName("address")
     val userAddress: UserAddress?,
     val phone: String?,
     val website: String?,
+    @SerializedName("company")
     val userCompany: UserCompany?
 ) {
     fun toUserModel(): UserModel {
@@ -20,10 +25,10 @@ data class UserNetworkEntity(
             id = id?.toLong() ?: -1L,
             firstName = firstname ?: "",
             lastName = lastname ?: "",
+            address = "${userAddress?.street ?: ""} ${userAddress?.suite ?: ""}, ${userAddress?.city ?: ""}",
             email = email ?: "",
             websiteUrl = website ?: "",
             geoLocation = GeoLocationModel(
-                //TODO: Cambiar el valor default o tener en cuenta para null
                 latitude = userAddress?.userGeo?.lat?.toDouble() ?: -34.603851,
                 longitude = userAddress?.userGeo?.lng?.toDouble() ?: -58.381775
             ),
@@ -45,6 +50,7 @@ data class UserAddress(
     val suite: String?,
     val city: String?,
     val zipcode: String?,
+    @SerializedName("geo")
     val userGeo: UserGeo?
 )
 

@@ -16,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fcascan.newsreaderapp.ui.components.LoadingIndicator
 import com.fcascan.newsreaderapp.ui.viewmodels.UsersMapScreenViewModel
 import com.fcascan.newsreaderapp.use_cases.GetGeoLocationByUserIdUseCase
@@ -103,9 +104,7 @@ fun UserMapScreen(
 fun UserMapScreenPortraitPreview() {
     UserMapScreen(
         userId = 1,
-        viewModel = UsersMapScreenViewModel(
-            GetGeoLocationByUserIdUseCase()
-        ),
+        viewModel = viewModel(),
         navigateBack = {},
     )
 }

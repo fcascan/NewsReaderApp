@@ -9,8 +9,8 @@ class UsersLocalRepositoryImpl @Inject constructor(
 ) : UsersLocalRepository {
     override suspend fun getAll(): List<UserModel> = usersDao.getAll().map { it.toUserModel() }
 
-    override suspend fun getUserById(userId: Long): UserModel? {
-        val user = usersDao.getUserById(userId)
+    override suspend fun getById(userId: Long): UserModel? {
+        val user = usersDao.getById(userId)
         return user?.toUserModel()
     }
 

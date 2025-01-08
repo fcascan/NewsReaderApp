@@ -2,6 +2,7 @@ package com.fcascan.newsreaderapp.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.fcascan.newsreaderapp.data.network.entity.UserAddress
 import com.fcascan.newsreaderapp.domain.GeoLocationModel
 import com.fcascan.newsreaderapp.domain.UserModel
 import com.google.gson.Gson
@@ -12,6 +13,7 @@ data class UserLocalEntity(
     val id: Long,
     val firstname: String,
     val lastname: String,
+    val address: String,
     val email: String,
     val websiteUrl: String,
     val geoLocation: String
@@ -21,6 +23,7 @@ data class UserLocalEntity(
             id = id,
             firstName = firstname,
             lastName = lastname,
+            address = address,
             email = email,
             websiteUrl = websiteUrl,
             geoLocation = Gson().fromJson(geoLocation, GeoLocationModel::class.java)
