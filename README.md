@@ -10,11 +10,16 @@ Lastly, there’s a users screen that shows a list of users, and when one is sel
 ### Project Specs: ###
 * min SDK 26 = Android Oreo (8.0)
 * max SDK 35 = Android 15
-* Coil
-* Google Maps Compose
-* Retrofit 2.9.0
+* MVVM architecture pattern
+* Jetpack Compose bom 2023.08.00
+     
+#### Dependencies ####
 * Kotlin 1.9.0
-* Jetpack Compose
+* Coil
+* Google Maps Compose 2.0.0
+* Retrofit 2.9.0
+* Room 2.4.0
+* SwipeRefresh 0.28.0
 
 by @fcascan     
 Fernando Castro Canosa

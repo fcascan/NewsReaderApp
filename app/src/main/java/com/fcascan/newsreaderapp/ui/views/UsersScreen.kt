@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -20,6 +21,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fcascan.newsreaderapp.domain.UserModel
 import com.fcascan.newsreaderapp.ui.components.UserCard
 import com.fcascan.newsreaderapp.ui.viewmodels.UsersScreenViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
 @Composable
 fun UsersScreen(
@@ -27,30 +31,43 @@ fun UsersScreen(
     navigateToUserMap: (Long) -> Unit,
 ) {
     val TAG = "UsersScreen"
+    val isRefreshing: Boolean by viewModel.isRefreshing.collectAsState()
+    val swipeRefreshState = rememberSwipeRefreshState(isRefreshing)
     val usersList: List<UserModel> by viewModel.usersList.collectAsState()
 
     Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
         Column(
             modifier = Modifier
-                .fillMaxSize()      //TODO: Fix, porque sino llega hasta por debajo del BottomNavBar
+                .fillMaxSize()
                 .padding(paddingValues)
         ) {
             Spacer(modifier = Modifier.height(8.dp))
-            LazyColumn(
-                //TODO: Agregar algun callback para cuando se realiza un scroll arriba de todo para en ese momento realizar un refresh de las noticias
-                modifier = Modifier
-                    .fillMaxWidth(),
-            ) {
-                items(usersList) { item ->
-                    UserCard(
-                        name = item.firstName,
-                        lastName = item.lastName,
-                        websiteUrl = item.websiteUrl,
-                        onClick = {
-                            Log.d(TAG, "User clicked -> ${item.id}")
-                            navigateToUserMap(item.id)
-                        },
+            SwipeRefresh(
+                state = swipeRefreshState,
+                onRefresh = { viewModel.fetchUsersFromRemote() },
+                indicator = { state, trigger ->
+                    SwipeRefreshIndicator(
+                        state = state,
+                        refreshTriggerDistance = trigger,
+                        contentColor = MaterialTheme.colorScheme.primary
                     )
+                }
+            ) {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                ) {
+                    items(usersList) { item ->
+                        UserCard(
+                            name = item.firstName,
+                            lastName = item.lastName,
+                            websiteUrl = item.websiteUrl,
+                            onClick = {
+                                Log.d(TAG, "User clicked -> ${item.id}")
+                                navigateToUserMap(item.id)
+                            },
+                        )
+                    }
                 }
             }
         }

@@ -20,6 +20,7 @@ okhttp3Version = "4.9.1"
 loggingInterceptorVersion = "4.9.2"
 retrofitVersion = "2.9.0"
 roomVersion = "2.4.0"
+swiperefreshVersion = "0.28.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,6 +51,7 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+accompanist-swiperefresh = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "swiperefreshVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -115,4 +115,7 @@ dependencies {
     //Room:
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
+    //SwipeRefresh:
+    implementation(libs.accompanist.swiperefresh)
 }

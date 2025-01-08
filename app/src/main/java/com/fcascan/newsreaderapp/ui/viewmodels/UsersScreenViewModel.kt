@@ -20,6 +20,10 @@ class UsersScreenViewModel @Inject constructor(
         private val TAG = UsersScreenViewModel::class.java.simpleName
     }
 
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing = _isRefreshing
+    fun setIsRefreshing(isRefreshing: Boolean) { _isRefreshing.value = isRefreshing }
+
     private val _usersList = MutableStateFlow<List<UserModel>>(emptyList())
     val usersList = _usersList
     fun setUsersList(usersList: List<UserModel>) { _usersList.value = usersList }

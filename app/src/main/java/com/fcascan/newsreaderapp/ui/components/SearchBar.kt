@@ -1,6 +1,7 @@
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -12,7 +13,7 @@ import androidx.compose.ui.unit.dp
 fun SearchBar(
     query: String,
     onQueryChanged: (String) -> Unit,
-    onSearch: () -> Unit
+    onClear: () -> Unit
 ) {
     TextField(
         value = query,
@@ -29,10 +30,10 @@ fun SearchBar(
             IconButton(
                 onClick = {
                     Log.d("SearchBar", "Search clicked")
-                    onSearch()
+                    onClear()
                 }
             ) {
-                Icon(Icons.Default.Search, contentDescription = "Search")
+                Icon(Icons.Default.Clear, contentDescription = "Clear")
             }
         }
     )
@@ -42,5 +43,5 @@ fun SearchBar(
 @Composable
 fun SearchBarPreview() {
     var query by remember { mutableStateOf("") }
-    SearchBar(query = query, onQueryChanged = { query = it }, onSearch = {})
+    SearchBar(query = query, onQueryChanged = { query = it }, onClear = {})
 }
