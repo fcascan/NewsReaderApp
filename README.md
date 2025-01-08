@@ -20,6 +20,8 @@ Lastly, there’s a users screen that shows a list of users, and when one is sel
 * Retrofit 2.9.0
 * Room 2.4.0
 * SwipeRefresh 0.28.0
+* JUnit 4.13.2
+* MockK 1.12.0
 
 by @fcascan     
 Fernando Castro Canosa
