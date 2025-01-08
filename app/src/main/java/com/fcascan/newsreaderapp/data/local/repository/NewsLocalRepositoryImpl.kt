@@ -1,7 +1,6 @@
 package com.fcascan.newsreaderapp.data.local.repository
 
 import com.fcascan.newsreaderapp.data.local.dao.NewsDao
-import com.fcascan.newsreaderapp.data.local.entity.NewsLocalEntity
 import com.fcascan.newsreaderapp.domain.NewsModel
 import javax.inject.Inject
 
